@@ -28,6 +28,9 @@ def go(args):
     idx = dataframe['price'].between(args.min_price, args.max_price)
     dataframe = dataframe[idx].copy()
 
+    idx = dataframe['longitude'].between(-74.25, -73.50) & dataframe['latitude'].between(40.5, 41.2)
+    dataframe = dataframe[idx].copy()
+
     # saving dataframe
     logger.info("Save dataframe")
     dataframe.to_csv("clean_sample.csv", index=False)
